@@ -14,9 +14,11 @@ import org.springframework.core.env.Environment;
 
 import com.ekumeed.help.ctrl.DataBase;
 
+//https://github.com/EkUmeedHelp/MyfirstSpringBootApp
+
 @SpringBootApplication
 @Configuration
-@PropertySource("classpath:database.properties")
+@PropertySource({"classpath:database.properties","classpath:Email.properties"})
 public class MyApp {
 
 	public static void main(String[] args) {
@@ -24,8 +26,6 @@ public class MyApp {
 		DataBase db = (DataBase)ctx.getBean(DataBase.class);
 		System.out.println("Name : "+db.getName());
 		System.out.println("Password : "+db.getPassword());
-		
-		
 	}
 	
 	@Autowired
@@ -36,7 +36,6 @@ public class MyApp {
 	
 	@Value("${ekumeedhelp.password}")
 	public String password;
-	
 	
 	@Bean
 	public DataBase getDeatils(){
